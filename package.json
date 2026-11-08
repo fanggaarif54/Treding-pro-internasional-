@@ -2,7 +2,10 @@
   "name": "app-trading",                                                     "version": "1.0.0",
   "description": "Trading Pro International 8K",                             "main": "server.js",
   "scripts": {                                                                 "start": "node server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"                    },
+    "test": "scripts": {
+    "start": "node server.js"
+  },
+
   "keywords": [],                                                            "author": "",
   "license": "ISC",                                                          "type": "commonjs",
   "dependencies": {                                                            "cors": "^2.8.6",
