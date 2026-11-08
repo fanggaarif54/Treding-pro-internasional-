@@ -137,19 +137,17 @@ app.post('/api/bet', (req, res) => {
         newBalance: foundUser.balance
     });
 });
-
-// Halaman Utama mengarah ke Halaman Login Terminator AI
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'index.html'));
-});
+
 
 // Halaman Terminal Pro Desktop
 app.get('/desktop.html', (req, res) => {
     res.sendFile(path.join(__dirname, 'desktop.html'));
 });
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'scanner.html'));
+});
 
-app.listen(PORT, () => {
-    console.log('==================================================');
+app.listen(PORT, () => {    console.log('==================================================');
     console.log(`🚀 TERMINATOR AI & TRADING PRO AKTIF DI PORT ${PORT}`);
     console.log(`💻 Akses browser: http://localhost:${PORT}/`);
     console.log('==================================================');
