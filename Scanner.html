@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luxury Barcode Scanner</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/quagga/0.12.1/quagga.min.js"></script>
+    <style>
+        body {
+            background-color: #0d1117;
+            color: #d4af37;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+        }
+        h2 {
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+        #interactive.viewport {
+            position: relative;
+            width: 100%;
+            max-width: 400px;
+            height: 300px;
+            margin: 20px auto;
+            border: 2px solid #d4af37;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(212, 175, 55, 0.2);
+        }
+        #interactive.viewport canvas, video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .result-box {
+            background-color: #161b22;
+            border: 1px solid #30363d;
+            padding: 15px;
+            border-radius: 8px;
+            max-width: 400px;
+            margin: 20px auto;
+            word-break: break-all;
+        }
+        button {
+            background: linear-gradient(135deg, #d4af37, #aa7c11);
+            color: #0d1117;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            transition: 0.3s;
+        }
+        button:hover {
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>LUXURY BARCODE SCANNER</h2>
+    <p style="color: #8b949e; font-size: 14px;">Arahkan kamera ke barcode produk</p>
+
+    <div id="interactive" class="viewport"></div>
+
+    <div class="result-box">
+        <strong>Hasil Pemindaian:</strong>
+        <p id="scan-result" style="color: #ffffff; margin-top: 5px;">Menunggu scan...</p>
+    </div>
+
+    <button id="start-btn" onclick="startScanner()">Mulai Kamera</button>
+
+    <script>
+        function startScanner() {
+            document.getElementById('start-btn').style.display = 'none';
+            
+            Quagga.init({
+                inputStream: {
+                    name: "Live",
+                    type: "LiveStream",
+                    target: document.querySelector('#interactive'),
+                    constraints: {
+                        facingMode: "environment"
+                    },
+                },
+                decoder: {
+                    readers: [
+                        "code_128_reader",
+                        "ean_reader",
+                        "ean_8_reader",
+                        "upc_reader",
+                        "code_39_reader"
+                    ]
+                },
+            }, function(err) {
+                if (err) {
+                    console.log(err);
+                    alert("Gagal mengakses kamera. Pastikan izin kamera diaktifkan.");
+                    document.getElementById('start-btn').style.display = 'block';
+                    return;
+                }
+                Quagga.start();
+            });
+
+            Quagga.onDetected(function(result) {
+                var code = result.codeResult.code;
+                document.getElementById('scan-result').innerText = code;
+            });
+        }
+    </script>
+
+</body>
+</html>
