@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>TRADING PRO INTERNATIONAL &bull; 8K CYBER LUXURY</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #03060f; color: #f3f4f6; touch-action: manipulation; overflow-x: hidden; }
+        .font-cyber { font-family: 'Orbitron', sans-serif; }
+
+        /* 8K LUXURY CYBER THEME (DEEP NAVY & GOLD) */
+        .luxury-panel {
+            background: linear-gradient(145deg, rgba(7, 13, 26, 0.95) 0%, rgba(13, 20, 38, 0.98) 100%);
+            backdrop-filter: blur(24px);
+            border: 1px solid rgba(234, 179, 8, 0.3);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(234, 179, 8, 0.2);
+        }
+        .gold-glow { text-shadow: 0 0 15px rgba(234, 179, 8, 0.5); }
+        .gold-border { border-color: rgba(234, 179, 8, 0.4); }
+
+        /* TOMBOL HIDUP 8K GLOWING */                                              .btn-glow-gold {
+            background: linear-gradient(135deg, #f59e0b 0%, #ca8a04 100%);             box-shadow: 0 0 20px rgba(245, 158, 11, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+            transition: all 0.2s ease;                                             }
+        .btn-glow-gold:active { transform: scale(0.97); box-shadow: 0 0 10px rgba(245, 158, 11, 0.6); }
+
+        .btn-glow-up {                                                                 background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            box-shadow: 0 0 25px rgba(16, 185, 129, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+            transition: all 0.2s ease;
+        }
+        .btn-glow-up:active { transform: scale(0.97); box-shadow: 0 0 12px rgba(16, 185, 129, 0.8); }                                                 
+        .btn-glow-down {                                                               background: linear-gradient(135deg, #f43f5e 0%, #e11d48 100%);
+            box-shadow: 0 0 25px rgba(244, 63, 94, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+            transition: all 0.2s ease;                                             }
+        .btn-glow-down:active { transform: scale(0.97); box-shadow: 0 0 12px rgba(244, 63, 94, 0.8); }
+                                                                                   .interactive-btn {
+            background: rgba(11, 22, 44, 0.8);
+            border: 1px solid rgba(234, 179, 8, 0.2);                                  transition: all 0.2s ease;
+        }                                                                          .interactive-btn:hover {
+            border-color: rgba(234, 179, 8, 0.6);                                      box-shadow: 0 0 12px rgba(234, 179, 8, 0.25);
+            background: rgba(17, 34, 68, 0.9);                                     }
+        .interactive-btn:active { transform: scale(0.96); }
+                                                                                   .custom-scrollbar::-webkit-scrollbar { width: 4px; height: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #ca8a04; border-radius: 4px; }                                                               #sidebarDrawer { transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+                                                                                   @media (min-width: 1024px) {
+            .desktop-grid-layout {                                                         display: grid;
+                grid-template-columns: 280px 1fr 340px;
+                gap: 16px;                                                                 align-items: start;
+                max-width: 1600px;
+                margin: 0 auto;                                                            width: 100%;
+            }
+            #sidebarDrawer {                                                               transform: translateX(0) !important;
+                position: static !important;
+                width: 100% !important;                                                    height: auto !important;
+                box-shadow: none !important;                                               background: transparent !important;
+                border: none !important;                                               }
+            #sidebarOverlay, header button[onclick*="toggleSidebar"] {                     display: none !important;
+            }                                                                      }
+    </style>                                                               </head>
+<body class="min-h-screen flex flex-col pb-10 relative bg-[#040812]">      
+    <audio id="masterAudio" preload="auto"></audio>                        
+    <!-- OVERLAY MOBILE -->                                                    <div id="sidebarOverlay" onclick="toggleSidebar(false)" class="fixed inset-0 bg-black/85 backdrop-blur-md z-40 hidden transition-opacity opacity-0 lg:hidden"></div>
+                                                                               <!-- TOP HEADER BAR -->
+    <header class="border-b gold-border bg-[#050b18] px-3 lg:px-4 py-2.5 flex justify-between items-center sticky top-0 z-30 shadow-2xl">
+        <div class="flex items-center space-x-2.5">                                    <button onclick="toggleSidebar(true)" class="p-2 interactive-btn rounded-xl text-amber-400 lg:hidden shadow">                                             ☰
+            </button>                                                                  <div>
+                <h1 class="font-cyber font-black text-xs lg:text-sm text-amber-400 tracking-wider gold-glow">TRADING PRO INT</h1>
+                <p class="text-[8px] lg:text-[9px] text-slate-400 font-cyber">8K CYBER LUXURY &bull; NAVY & GOLD</p>
+            </div>                                                                 </div>
+                                                                                   <div class="flex items-center space-x-2">
+            <button onclick="openDepositModal()" class="btn-glow-gold text-slate-950 font-cyber text-[10px] lg:text-xs px-3 py-1.5 rounded-xl font-black transition">+ DEPOSIT</button>                                                      <button onclick="openWithdrawModal()" class="interactive-btn text-amber-400 font-cyber text-[10px] lg:text-xs px-3 py-1.5 rounded-xl font-bold transition">↓ WD</button>
+            <div class="bg-[#081225] px-3 py-1 rounded-xl border gold-border text-right shadow-inner">
+                <p id="usernameDisplay" class="text-[11px] lg:text-xs font-cyber text-amber-300 font-bold leading-none">Arif</p>
+                <span id="userIdDisplay" class="text-slate-400 text-[9px] lg:text-[10px]">8K Pro Trader</span>
+            </div>                                                                 </div>
+    </header>                                                              
+    <!-- MAIN WRAPPER -->                                                      <main class="p-2.5 lg:p-6 w-full max-w-7xl mx-auto flex-1">
+        <div class="desktop-grid-layout space-y-3 lg:space-y-0">           
+            <!-- KOLOM 1: KONTROL AKUN & TRADING -->                                   <div id="sidebarDrawer" class="fixed top-0 bottom-0 left-0 w-80 bg-[#050b18] lg:bg-transparent lg:static lg:w-full border-r gold-border lg:border-none z-50 p-4 lg:p-0 transform -translate-x-full lg:translate-x-0 flex flex-col justify-between overflow-y-auto custom-scrollbar shadow-2xl lg:shadow-none space-y-4">
+                <div class="space-y-3.5 luxury-panel lg:bg-opacity-95 p-3.5 lg:p-4 rounded-2xl">
+                                                                                               <!-- SWITCH AKUN DEMO / RIIL -->
+                    <div class="space-y-2 bg-[#03060f] p-3 rounded-2xl border gold-border shadow-inner">
+                        <div class="flex justify-between items-center text-xs font-cyber">
+                            <span class="text-slate-400">Tipe Akun:</span>                             <span id="activeAccountBadge" class="text-amber-400 font-bold gold-glow">AKUN RIIL</span>                                                         </div>
+                        <div class="grid grid-cols-2 gap-2 text-xs font-cyber pt-1">
+                            <button onclick="switchAccountType('demo')" id="btnDemo" class="py-2 rounded-xl interactive-btn text-slate-300 font-bold">DEMO</button>                                                                                          <button onclick="switchAccountType('real')" id="btnReal" class="py-2 rounded-xl btn-glow-gold text-slate-950 font-black shadow-lg">RIIL</button>
+                        </div>
+                        <button onclick="openAuthModal()" class="w-full mt-2 interactive-btn text-amber-300 font-cyber text-[10px] py-2 rounded-xl flex items-center justify-center space-x-1 shadow">                                                       <span>🔐</span><span>Registrasi / Login Akun Riil</span>                                                                                          </button>
+                    </div>                                                 
+                    <div class="flex justify-between items-center border-b border-slate-800 pb-2 lg:hidden">
+                        <div class="flex items-center space-x-2">                                      <span class="text-amber-400 text-base">⚙️</span>
+                            <h3 class="font-cyber font-bold text-xs text-amber-300">MENU TRADING 8K</h3>
+                        </div>                                                                     <button onclick="toggleSidebar(false)" class="text-slate-400 hover:text-white font-bold text-sm px-2 py-1 interactive-btn rounded-lg">✕</button>                                                                             </div>
+                                                                                               <!-- ORDER EXECUTION PANEL -->
+                    <div class="space-y-2.5 font-cyber pt-1 border-t border-slate-800">                                                                                       <div class="space-y-1">
+                            <label class="text-slate-400 text-[10px] uppercase">Durasi Waktu Trading (Expiry)</label>
+                            <div class="grid grid-cols-3 gap-1.5 text-xs">
+                                <button onclick="setDuration(30)" id="dur-30" class="py-2 rounded-lg interactive-btn text-slate-300">30d</button>
+                                <button onclick="setDuration(60)" id="dur-60" class="py-2 rounded-lg btn-glow-gold text-slate-950 font-bold">1m</button>
+                                <button onclick="setDuration(300)" id="dur-300" class="py-2 rounded-lg interactive-btn text-slate-300">5m</button>
+                            </div>                                                                 </div>
+
+                        <!-- TOMBOL UP & DOWN HIDUP BERWARNA HIJAU & MERAH MENYALA -->
+                        <div class="grid grid-cols-2 gap-2 pt-1">                                      <button onclick="setDirection('UP')" id="btnUp" class="btn-glow-up text-white font-black py-3 rounded-xl flex items-center justify-center space-x-1 text-xs">
+                                <span>📈</span><span>UP</span>                                         </button>
+                            <button onclick="setDirection('DOWN')" id="btnDown" class="interactive-btn text-slate-400 font-bold py-3 rounded-xl flex items-center justify-center space-x-1 text-xs">
+                                <span>📉</span><span>DOWN</span>                                       </button>
+                        </div>
+                                                                                                   <div class="space-y-1 text-xs pt-1 font-sans">
+                            <label class="text-slate-400 text-[11px] font-cyber">Jumlah Investasi (Bet)</label>
+                            <div class="flex items-center bg-[#03060f] border gold-border rounded-xl px-3 py-2 shadow-inner">                                                         <span class="text-amber-400 mr-1 text-xs font-bold">Rp</span>
+                                <input type="number" id="betInput" value="1000" class="w-full bg-transparent text-center font-cyber font-bold text-amber-300 text-sm focus:outline-none">                                                                    </div>
+                                                                                                       <div class="grid grid-cols-3 gap-1 pt-1.5 font-cyber text-[10px]">                                                                                        <button onclick="setAmount(500)" class="interactive-btn text-amber-300 py-1.5 rounded">500</button>                                                   <button onclick="setAmount(1000)" class="interactive-btn text-amber-300 py-1.5 rounded">1k</button>                                                   <button onclick="setAmount(3000)" class="interactive-btn text-amber-300 py-1.5 rounded">3k</button>                                                   <button onclick="setAmount(5000)" class="interactive-btn text-amber-300 py-1.5 rounded">5k</button>                                                   <button onclick="setAmount(10000)" class="interactive-btn text-amber-300 py-1.5 rounded">10k</button>                                                 <button onclick="setAmount(15000)" class="interactive-btn text-amber-300 py-1.5 rounded">15k</button>                                             </div>
+                        </div>                                             
+                        <button id="execBtn" onclick="executeTrade(); toggleSidebar(false);" class="w-full btn-glow-gold text-slate-950 font-cyber font-black text-xs py-4 rounded-xl transition flex items-center justify-center space-x-2 mt-1">
+                            <span>⚡</span><span>BUKA POSISI TRADING</span>                        </button>
+                    </div>                                                                 </div>
+            </div>                                                         
+            <!-- KOLOM 2: GRAFIK & ZOOM KONTROL -->                                    <div class="space-y-3 w-full">
+                <!-- TOP METRICS CARDS -->                                                 <div class="grid grid-cols-2 gap-2.5">
+                    <div class="luxury-panel p-2.5 lg:p-3 rounded-2xl border-l-4 border-l-amber-500 flex justify-between items-center shadow-lg">
+                        <div>                                                                          <p id="balanceTitleLabel" class="text-[9px] text-slate-400 uppercase font-cyber">Saldo Akun (Riil)</p>                                                <h3 id="balanceDisplay" class="text-xs lg:text-sm font-cyber font-bold text-amber-300 gold-glow">Rp 0</h3>
+                        </div>
+                        <span class="text-lg">💰</span>
+                    </div>
+                    <div class="luxury-panel p-2.5 lg:p-3 rounded-2xl border-l-4 border-l-cyan-500 flex justify-between items-center shadow-lg">
+                        <div>
+                            <p class="text-[9px] text-slate-400 uppercase font-cyber">Payout / Profit</p>
+                            <h3 class="text-xs lg:text-sm font-cyber font-bold text-emerald-400">1.90x (90%)</h3>
+                        </div>                                                                     <span class="text-lg">📈</span>
+                    </div>
+                </div>
+
+                <!-- MAIN CHART PANEL -->
+                <div class="luxury-panel p-3 lg:p-4 rounded-2xl space-y-2.5 shadow-2xl">
+
+                    <div class="flex flex-wrap justify-between items-center text-[10px] lg:text-xs font-cyber border-b border-slate-800 pb-2 gap-2">
+                        <div class="flex items-center space-x-1.5 overflow-x-auto w-full lg:w-auto pb-1 lg:pb-0">
+                            <button onclick="switchAsset('EURUSD')" id="assetEur" class="px-2.5 py-1.5 btn-glow-gold text-slate-950 font-black rounded-lg shadow whitespace-nowrap">💱 EUR/USD</button>
+                            <button onclick="switchAsset('BTCUSD')" id="assetBtc" class="px-2.5 py-1.5 interactive-btn text-slate-300 rounded-lg font-bold whitespace-nowrap">🪙 BTC</button>
+                            <button onclick="switchAsset('ETHUSD')" id="assetEth" class="px-2.5 py-1.5 interactive-btn text-slate-300 rounded-lg font-bold whitespace-nowrap">💎 ETH</button>
+                        </div>
+
+                        <div class="flex items-center space-x-2">
+                            <button onclick="toggleIndicator()" id="btnIndicator" class="px-2.5 py-1 bg-amber-500/20 text-amber-300 border gold-border rounded-lg font-bold text-[10px] interactive-btn">📊 MA: ON</button>
+
+                            <!-- TOMBOL ZOOM KONTROL -->
+                            <div class="flex items-center space-x-1 bg-[#050b18] px-2 py-1 rounded-lg border gold-border">
+                                <span class="text-[9px] text-slate-400">Zoom:</span>
+                                <button onclick="zoomChart(-1)" class="w-5 h-5 interactive-btn text-amber-300 font-bold rounded flex items-center justify-center text-xs">-</button>
+                                <button onclick="zoomChart(1)" class="w-5 h-5 interactive-btn text-amber-300 font-bold rounded flex items-center justify-center text-xs">+</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex justify-between items-center text-xs lg:text-sm font-cyber">
+                        <span id="assetTitleLabel" class="text-amber-400 font-bold">EUR/USD (OTC) <span class="text-emerald-400 text-[10px]">+0.32% ▲</span></span>
+                        <span id="priceHeader" class="text-amber-300 font-bold text-xs lg:text-sm gold-glow">1.08403</span>
+                    </div>
+
+                    <!-- CANVAS CONTAINER -->
+                    <div id="chartContainer" class="w-full h-64 lg:h-96 bg-[#020409] rounded-xl border gold-border relative flex overflow-hidden touch-none select-none shadow-inner">
+                        <div class="flex-1 relative h-full flex flex-col">
+                            <div class="flex-1 relative">
+                                <canvas id="mainCandleChart" class="w-full h-full block"></canvas>
+                            </div>
+                            <div class="h-10 lg:h-12 border-t border-slate-800/80 relative bg-[#020409]/60">                                                                          <canvas id="volumeChart" class="w-full h-full block"></canvas>
+                            </div>
+                        </div>
+
+                        <div class="w-20 lg:w-28 bg-[#030712] border-l gold-border flex flex-col justify-between py-2 px-1 text-[9px] lg:text-[10px] font-cyber text-slate-400 shrink-0 relative overflow-hidden shadow-lg">
+                            <span id="priceScale6">1.08600</span>
+                            <span id="priceScale5">1.08520</span>
+                            <span id="priceScale4">1.08440</span>
+                            <span id="priceScale3">1.08360</span>
+                            <span id="priceScale2">1.08280</span>
+                            <span id="priceScale1">1.08200</span>
+
+                            <div id="runningPriceBadge" class="absolute left-0 right-0 btn-glow-gold text-slate-950 font-black text-[9px] lg:text-[10px] py-0.5 lg:py-1 px-1 rounded text-center shadow-lg transition-all duration-75">
+                                <span id="scaleMid">1.08403</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- MINI TREND TRACK -->
+                <div class="luxury-panel p-2.5 lg:p-3 rounded-2xl space-y-1.5 shadow-xl border gold-border">
+                    <div class="flex justify-between items-center text-[10px] lg:text-xs font-cyber px-1">
+                        <span class="text-amber-400 font-bold gold-glow">▲ 24% INTERNATIONAL 8K LIQUIDITY TREND</span>
+                        <span class="text-slate-400">GOLD FEED</span>
+                    </div>
+                    <div class="w-full h-14 lg:h-16 bg-[#020409] rounded-xl border border-slate-800 relative overflow-hidden">
+                        <canvas id="miniTrendChart" class="w-full h-full block"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- KOLOM 3: STATUS & RIWAYAT (KANAN) -->
+            <div class="space-y-3 w-full">
+                <div id="activeTradeBox" class="luxury-panel p-3.5 rounded-2xl space-y-2 text-xs font-cyber hidden border gold-border shadow-2xl">
+                    <div class="flex justify-between items-center text-amber-300 font-bold">
+                        <span id="statusTitle">⏳ POSISI SEDANG BERJALAN...</span>
+                        <span id="countdownTimer" class="text-yellow-400 text-sm font-black gold-glow">00:00</span>
+                    </div>
+                    <p id="tradeStatusDesc" class="text-[11px] text-slate-300">Menunggu waktu expiry selesai...</p>
+                </div>
+
+                <div class="luxury-panel p-3.5 rounded-2xl space-y-2 text-xs font-cyber shadow-2xl">
+                    <p class="text-amber-400 font-bold text-xs border-b border-slate-800 pb-1.5">🕒 Riwayat Sesi & Transaksi</p>
+                    <div id="historyLog" class="space-y-1.5 text-[11px] text-slate-300 max-h-72 lg:max-h-80 overflow-y-auto custom-scrollbar">
+                        <p class="text-slate-500">Belum ada posisi terbuka...</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- MODAL AUTH -->
+    <div id="authModal" class="fixed inset-0 bg-black/85 backdrop-blur-md hidden flex items-center justify-center p-4 z-50">
+        <div class="luxury-panel p-5 rounded-2xl max-w-sm w-full space-y-4 border gold-border shadow-2xl">
+            <div class="flex justify-between items-center border-b border-slate-800 pb-2">
+                <h3 class="font-cyber text-sm font-bold text-amber-400">🔐 REGISTRASI / LOGIN AKUN RIIL</h3>
+                <button onclick="closeAuthModal()" class="text-slate-400 hover:text-white text-base font-bold">✕</button>
+            </div>
+            <div class="space-y-3 text-xs font-cyber">
+                <div>                                                                          <label class="block text-slate-400 mb-1">Nama Lengkap Trader</label>
+                    <input type="text" id="regName" placeholder="Contoh: Arif Abas" class="w-full bg-[#03060f] border gold-border rounded-xl px-3 py-2 text-amber-300 font-bold">
+                </div>
+                <div>
+                    <label class="block text-slate-400 mb-1">Email Aktif</label>
+                    <input type="email" id="regEmail" placeholder="arif@trader.com" class="w-full bg-[#03060f] border gold-border rounded-xl px-3 py-2 text-white">
+                </div>
+                <div>
+                    <label class="block text-slate-400 mb-1">Password Akun</label>
+                    <input type="password" id="regPass" placeholder="••••••••" class="w-full bg-[#03060f] border gold-border rounded-xl px-3 py-2 text-white">
+                </div>
+            </div>                                                                     <button onclick="submitAuth()" class="w-full btn-glow-gold text-slate-950 font-cyber font-black text-xs py-3 rounded-xl shadow-lg">DAFTAR & MASUK AKUN RIIL 🚀</button>
+        </div>
+    </div>
+
+    <!-- MODAL DEPOSIT -->
+    <div id="depositModal" class="fixed inset-0 bg-black/85 backdrop-blur-md hidden flex items-center justify-center p-4 z-50">
+        <div class="luxury-panel p-5 rounded-2xl max-w-sm w-full space-y-4 border gold-border shadow-2xl">
+            <div class="flex justify-between items-center border-b border-slate-800 pb-2">
+                <h3 class="font-cyber text-sm font-bold text-amber-400">💳 TOP-UP DEPOSIT AKUN</h3>
+                <button onclick="closeDepositModal()" class="text-slate-400 hover:text-white text-base font-bold">✕</button>
+            </div>
+            <p class="text-[11px] text-slate-400">Pilih metode pembayaran resmi instan:</p>
+            <div class="space-y-3 text-xs font-cyber">
+                <div>
+                    <label class="block text-slate-400 mb-1">Metode Pembayaran Resmi</label>
+                    <select id="depositMethod" class="w-full bg-[#03060f] border gold-border rounded-xl px-3 py-2 text-amber-300 font-bold">
+                        <option value="BCA">🔵 Bank BCA (Virtual Account)</option>
+                        <option value="BNI">🟢 Bank BNI (Virtual Account)</option>
+                        <option value="BRI">🟠 Bank BRI (Virtual Account)</option>
+                        <option value="MANDIRI">🟡 Bank Mandiri (Virtual Account)</option>
+                        <option value="SEABANK">🍊 SeaBank Indonesia</option>
+                        <option value="DANA">💵 DANA E-Wallet</option>
+                        <option value="OVO">🟣 OVO E-Wallet</option>
+                        <option value="GOPAY">🟢 GoPay E-Wallet</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-slate-400 mb-1">Nominal Top-Up (Min. Rp 10.000)</label>
+                    <input type="number" id="depositAmount" value="50000" class="w-full bg-[#03060f] border gold-border rounded-xl px-3 py-2 text-amber-300 font-bold">
+                </div>
+            </div>
+            <button onclick="submitDeposit()" class="w-full btn-glow-gold text-slate-950 font-cyber font-black text-xs py-3 rounded-xl shadow-lg">BAYAR & TAMBAH SALDO 🚀</button>
+        </div>
+    </div>
+
+    <!-- MODAL WITHDRAW -->
+    <div id="withdrawModal" class="fixed inset-0 bg-black/85 backdrop-blur-md hidden flex items-center justify-center p-4 z-50">
+        <div class="luxury-panel p-5 rounded-2xl max-w-sm w-full space-y-4 border gold-border shadow-2xl">
+            <div class="flex justify-between items-center border-b border-slate-800 pb-2">
+                <h3 class="font-cyber text-sm font-bold text-amber-400">↓ PENARIKAN DANA (WD)</h3>
+                <button onclick="closeWithdrawModal()" class="text-slate-400 hover:text-white text-base font-bold">✕</button>
+            </div>
+            <p class="text-[11px] text-slate-400">Cairkan hasil profit trading langsung ke rekening resmi Anda:</p>
+            <div class="space-y-3 text-xs font-cyber">
+                <div>
+                    <label class="block text-slate-400 mb-1">Tujuan Pencairan (Bank / E-Wallet)</label>
+                    <select id="withdrawBank" class="w-full bg-[#03060f] border gold-border rounded-xl px-3 py-2 text-amber-300 font-bold">
+                        <option value="BCA">🔵 Bank BCA</option>                                   <option value="BNI">🟢 Bank BNI</option>
+                        <option value="BRI">🟠 Bank BRI</option>                                   <option value="MANDIRI">🟡 Bank Mandiri</option>
+                        <option value="SEABANK">🍊 SeaBank</option>                                <option value="DANA">💵 DANA</option>
+                        <option value="OVO">🟣 OVO</option>                                        <option value="GOPAY">🟢 GoPay</option>
+                    </select>                                                              </div>
+                <div>                                                                          <label class="block text-slate-400 mb-1">Nomor Rekening / No. HP Tujuan</label>
+                    <input type="text" id="withdrawAccountNo" placeholder="Contoh: 1234567890" class="w-full bg-[#03060f] border gold-border rounded-xl px-3 py-2 text-white font-bold">
+                </div>
+                <div>                                                                          <label class="block text-slate-400 mb-1">Nominal Penarikan (Min. Rp 50.000)</label>
+                    <input type="number" id="withdrawAmount" value="50000" class="w-full bg-[#03060f] border gold-border rounded-xl px-3 py-2 text-amber-300 font-bold">
+                </div>
+            </div>
+            <button onclick="submitWithdraw()" class="w-full btn-glow-gold text-slate-950 font-cyber font-black text-xs py-3 rounded-xl shadow-lg">AJUKAN PENARIKAN DANA 💸</button>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT ENGINE -->
+    <script>
+        let userId = localStorage.getItem('userId');                               let username = localStorage.getItem('username');
+        let accountType = localStorage.getItem('accountType') || 'real';           let demoBalance = 10000000;
+        let realBalance = 0;                                                       let currentAsset = 'EURUSD';
+        let showIndicator = true;
+        let zoomLevel = 25;
+
+        if (!userId) {
+            userId = 'arif_' + Math.floor(Math.random() * 89999 + 10000);
+            username = 'Arif Trader';
+            localStorage.setItem('userId', userId);
+            localStorage.setItem('username', username);
+        }
+        document.getElementById('usernameDisplay').innerText = username;
+        document.getElementById('userIdDisplay').innerText = "ID: " + userId;
+
+        async function fetchBalance() {
+            if (accountType === 'demo') {
+                document.getElementById('balanceDisplay').innerText = "Rp " + demoBalance.toLocaleString('id-ID');
+                return;
+            }
+            try {
+                const res = await fetch(`/api/balance/${userId}`);
+                const data = await res.json();
+                if (data.balance !== undefined) {
+                    realBalance = data.balance;
+                    document.getElementById('balanceDisplay').innerText = "Rp " + realBalance.toLocaleString('id-ID');
+                }
+            } catch (err) {}
+        }
+
+        function switchAccountType(type) {
+            accountType = type;
+            localStorage.setItem('accountType', type);
+            const badge = document.getElementById('activeAccountBadge');
+            const titleLabel = document.getElementById('balanceTitleLabel');
+            const btnDemo = document.getElementById('btnDemo');
+            const btnReal = document.getElementById('btnReal');
+
+            if (type === 'demo') {
+                badge.innerText = "AKUN DEMO VIRTUAL";
+                badge.className = "text-cyan-400 font-bold";
+                titleLabel.innerText = "SALDO AKUN (DEMO)";
+                btnDemo.className = "py-2 rounded-xl btn-glow-gold text-slate-950 font-black shadow";
+                btnReal.className = "py-2 rounded-xl interactive-btn text-slate-300 font-bold";
+            } else {
+                badge.innerText = "AKUN RIIL";
+                badge.className = "text-amber-400 font-bold gold-glow";
+                titleLabel.innerText = "SALDO AKUN (RIIL)";
+                btnReal.className = "py-2 rounded-xl btn-glow-gold text-slate-950 font-black shadow";
+                btnDemo.className = "py-2 rounded-xl interactive-btn text-slate-300 font-bold";
+            }
+            fetchBalance();
+        }
+
+        switchAccountType(accountType);
+        setInterval(fetchBalance, 3000);
+
+        function openAuthModal() { document.getElementById('authModal').classList.remove('hidden'); }
+        function closeAuthModal() { document.getElementById('authModal').classList.add('hidden'); }
+        function openDepositModal() { document.getElementById('depositModal').classList.remove('hidden'); }
+        function closeDepositModal() { document.getElementById('depositModal').classList.add('hidden'); }
+        function openWithdrawModal() { document.getElementById('withdrawModal').classList.remove('hidden'); }
+        function closeWithdrawModal() { document.getElementById('withdrawModal').classList.add('hidden'); }
+
+        function toggleIndicator() {
+            showIndicator = !showIndicator;
+            const btn = document.getElementById('btnIndicator');
+            if (showIndicator) {
+                btn.className = "px-2.5 py-1 bg-amber-500/20 text-amber-300 border gold-border rounded-lg font-bold text-[10px] interactive-btn";
+                btn.innerText = "📊 MA: ON";
+            } else {
+                btn.className = "px-2.5 py-1 interactive-btn text-slate-400 rounded-lg font-bold text-[10px]";
+                btn.innerText = "📊 MA: OFF";
+            }
+        }
+
+        async function submitAuth() {
+            const name = document.getElementById('regName').value;
+            const email = document.getElementById('regEmail').value;
+            const pass = document.getElementById('regPass').value;
+            if (!name || !email) { alert("Lengkapi data!"); return; }
+
+            username = name;
+            localStorage.setItem('username', username);
+            document.getElementById('usernameDisplay').innerText = username;
+
+            try {
+                await fetch('/api/register', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ userId, username, email, password: pass })
+                });
+                alert("Login / Registrasi Riil Berhasil, " + username);
+                closeAuthModal();
+                fetchBalance();
+            } catch (e) { alert("Berhasil!"); closeAuthModal(); }
+        }
+
+        async function submitDeposit() {
+            const amount = Number(document.getElementById('depositAmount').value);
+            const method = document.getElementById('depositMethod').value;
+            if (amount < 10000) { alert("Minimum deposit Rp 10.000!"); return; }
+
+            if (accountType === 'demo') {
+                demoBalance += amount;
+                alert(`Top-up Demo Rp ${amount.toLocaleString('id-ID')} via ${method} berhasil!`);
+                closeDepositModal();
+                fetchBalance();
+                return;
+            }
+
+            try {
+                const res = await fetch('/api/deposit', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ userId, amount, paymentMethod: method })
+                });
+                const data = await res.json();
+                if (data.success) {
+                    alert(`Top-up Riil Rp ${amount.toLocaleString('id-ID')} via ${method} Berhasil!`);
+                    closeDepositModal();
+                    fetchBalance();
+                } else { alert("Gagal: " + data.error); }
+            } catch (err) { alert("Kesalahan jaringan!"); }
+        }
+
+        async function submitWithdraw() {
+            const amount = Number(document.getElementById('withdrawAmount').value);
+            const bank = document.getElementById('withdrawBank').value;
+            const accNo = document.getElementById('withdrawAccountNo').value;
+
+            if (amount < 50000) { alert("Minimum WD Rp 50.000!"); return; }
+            if (!accNo) { alert("Masukkan nomor rekening tujuan!"); return; }
+            if (accountType === 'demo') { alert("Penarikan hanya dari Akun Riil!"); return; }
+            if (realBalance < amount) { alert("Saldo Riil tidak cukup!"); return; }
+
+            try {
+                await fetch('/api/deposit', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ userId, amount: -amount, paymentMethod: 'WD_' + bank })
+                });
+                let log = document.getElementById('historyLog');
+                log.innerHTML = `<p class="text-amber-400 font-bold">💸 WD -Rp ${amount.toLocaleString('id-ID')} (${bank} - ${accNo}) DIPROSES</p>` + log.innerHTML;
+                alert(`Penarikan Rp ${amount.toLocaleString('id-ID')} ke ${bank} Berhasil Diajukan!`);
+                closeWithdrawModal();                                                      fetchBalance();
+            } catch (e) { alert("Gagal mengajukan penarikan."); }
+        }
+
+        function switchAsset(asset) {
+            currentAsset = asset;
+            ['Eur', 'Btc', 'Eth'].forEach(a => {
+                document.getElementById('asset' + a).className = "px-2.5 py-1.5 interactive-btn text-slate-300 rounded-lg font-bold whitespace-nowrap";
+            });
+                                                                                       if (asset === 'EURUSD') {
+                document.getElementById('assetEur').className = "px-2.5 py-1.5 btn-glow-gold text-slate-950 font-black rounded-lg shadow whitespace-nowrap";
+                document.getElementById('assetTitleLabel').innerHTML = 'EUR/USD (OTC) <span class="text-emerald-400 text-[10px]">+0.32% ▲</span>';                    currentPrice = 1.08403;
+            } else if (asset === 'BTCUSD') {
+                document.getElementById('assetBtc').className = "px-2.5 py-1.5 btn-glow-gold text-slate-950 font-black rounded-lg shadow whitespace-nowrap";                                                                                     document.getElementById('assetTitleLabel').innerHTML = 'Bitcoin (BTC/USD) <span class="text-emerald-400 text-[10px]">+2.45% ▲</span>';
+                currentPrice = 91250.00;                                               } else if (asset === 'ETHUSD') {
+                document.getElementById('assetEth').className = "px-2.5 py-1.5 btn-glow-gold text-slate-950 font-black rounded-lg shadow whitespace-nowrap";
+                document.getElementById('assetTitleLabel').innerHTML = 'Ethereum (ETH/USD) <span class="text-emerald-400 text-[10px]">+1.80% ▲</span>';
+                currentPrice = 3450.00;
+            }                                                                          targetPrice = currentPrice;
+            initCandles();
+        }                                                                  
+        let activeDirection = 'UP';
+        function setDirection(dir) {                                                   activeDirection = dir;
+            if (dir === 'UP') {
+                document.getElementById('btnUp').className = "btn-glow-up text-white font-black py-3 rounded-xl flex items-center justify-center space-x-1 text-xs";
+                document.getElementById('btnDown').className = "interactive-btn text-slate-400 font-bold py-3 rounded-xl flex items-center justify-center space-x-1 text-xs";
+            } else {                                                                       document.getElementById('btnDown').className = "btn-glow-down text-white font-black py-3 rounded-xl flex items-center justify-center space-x-1 text-xs";
+                document.getElementById('btnUp').className = "interactive-btn text-slate-400 font-bold py-3 rounded-xl flex items-center justify-center space-x-1 text-xs";
+            }
+        }
+
+        let isTradingActive = false;
+        let selectedDuration = 60;
+        let activeTrade = null;
+
+        function setDuration(seconds) {
+            selectedDuration = seconds;
+            [30, 60, 300].forEach(sec => {
+                const btn = document.getElementById(`dur-${sec}`);
+                if (sec === seconds) {
+                    btn.className = "py-2 rounded-lg btn-glow-gold text-slate-950 font-bold";
+                } else {
+                    btn.className = "py-2 rounded-lg interactive-btn text-slate-300";
+                }
+            });
+        }
+        function setAmount(val) { document.getElementById('betInput').value = val; }
+        function toggleSidebar(open) {
+            const sidebar = document.getElementById('sidebarDrawer');
+            const overlay = document.getElementById('sidebarOverlay');
+            if (open) {
+                sidebar.style.transform = 'translateX(0)';
+                overlay.classList.remove('hidden');
+                setTimeout(() => overlay.classList.add('opacity-100'), 10);
+            } else {
+                sidebar.style.transform = 'translateX(-100%)';
+                overlay.classList.remove('opacity-100');
+                setTimeout(() => overlay.classList.add('hidden'), 300);
+            }
+        }
+
+        async function executeTrade() {
+            if (isTradingActive) { alert("Selesaikan posisi aktif dulu!"); return; }
+            const betAmount = Number(document.getElementById('betInput').value);
+            if (betAmount < 500) { alert("Min investasi Rp 500!"); return; }
+
+            if (accountType === 'demo' && demoBalance < betAmount) { alert("Saldo demo kurang!"); return; }
+            if (accountType === 'real' && realBalance < betAmount) { alert("Saldo Riil kurang! Top-up dulu."); return; }
+
+            isTradingActive = true;
+            activeTrade = { price: currentPrice, direction: activeDirection, amount: betAmount };
+
+            if (accountType === 'demo') { demoBalance -= betAmount; }
+            else {
+                await fetch('/api/bet', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ userId, betAmount, prediction: activeDirection, marketResult: activeDirection })
+                });
+            }
+
+            const execBtn = document.getElementById('execBtn');
+            execBtn.disabled = true;
+            execBtn.className = "w-full bg-slate-800 text-slate-500 font-cyber text-xs py-3.5 rounded-xl cursor-not-allowed";
+
+            const activeBox = document.getElementById('activeTradeBox');
+            activeBox.classList.remove('hidden');
+
+            let timeLeft = selectedDuration;
+            const timerEl = document.getElementById('countdownTimer');
+            const statusDesc = document.getElementById('tradeStatusDesc');
+            const statusTitle = document.getElementById('statusTitle');
+            statusDesc.innerText = `Posisi ${activeDirection} @ ${currentPrice.toFixed(currentAsset==='EURUSD'?5:2)} (Rp ${betAmount.toLocaleString('id-ID')})`;
+
+            const countdownInterval = setInterval(async () => {
+                timeLeft--;
+                let mins = Math.floor(timeLeft / 60);
+                let secs = timeLeft % 60;
+                timerEl.innerText = `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+
+                if (timeLeft <= 0) {
+                    clearInterval(countdownInterval);
+                    const marketResult = Math.random() > 0.45 ? activeDirection : (activeDirection === 'UP' ? 'DOWN' : 'UP');
+                    const isWin = activeDirection === marketResult;
+                    const payout = isWin ? Math.round(betAmount * 1.90) : 0;
+
+                    if (isWin) {
+                        if (accountType === 'demo') { demoBalance += payout; }
+                        else {
+                            await fetch('/api/deposit', {
+                                method: 'POST',
+                                headers: { 'Content-Type': 'application/json' },
+                                body: JSON.stringify({ userId, amount: payout, paymentMethod: 'PROFIT_WIN' })
+                            });
+                        }
+                    }
+
+                    let log = document.getElementById('historyLog');
+                    if (isWin) {
+                        log.innerHTML = `<p class="text-amber-400 font-bold">✨ PROFIT +Rp ${payout.toLocaleString('id-ID')} (${currentAsset})</p>` + log.innerHTML;
+                        alert(`WAKTU HABIS! MENANG Rp ${payout.toLocaleString('id-ID')}`);
+                    } else {
+                        log.innerHTML = `<p class="text-rose-400 font-bold">❌ LOSS -Rp ${betAmount.toLocaleString('id-ID')} (${currentAsset})</p>` + log.innerHTML;
+                        alert(`WAKTU HABIS! Posisi mengalami kerugian.`);
+                    }
+
+                    activeBox.classList.add('hidden');
+                    activeTrade = null;
+                    execBtn.disabled = false;
+                    execBtn.className = "w-full btn-glow-gold text-slate-950 font-cyber font-black text-xs py-4 rounded-xl transition flex items-center justify-center space-x-2";
+                    isTradingActive = false;
+                    fetchBalance();
+                }
+            }, 1000);
+        }
+
+        const canvas = document.getElementById('mainCandleChart');
+        const ctx = canvas.getContext('2d');
+        const volCanvas = document.getElementById('volumeChart');
+        const volCtx = volCanvas.getContext('2d');
+        const miniCanvas = document.getElementById('miniTrendChart');
+        const miniCtx = miniCanvas.getContext('2d');
+        const container = document.getElementById('chartContainer');
+
+        let candles = [];
+        let miniHistory = [];
+        let currentPrice = 1.08403;
+        let targetPrice = 1.08403;
+
+        function initCandles() {
+            candles = [];
+            miniHistory = [];
+            let volatility = currentAsset === 'EURUSD' ? 0.0005 : (currentAsset === 'BTCUSD' ? 120.0 : 15.0);
+            let p = currentPrice;
+
+            for (let i = 0; i < 60; i++) {
+                let open = p + (Math.random() - 0.5) * volatility;
+                let close = open + (Math.random() - 0.48) * volatility;
+                let high = Math.max(open, close) + Math.random() * (volatility * 0.5);
+                let low = Math.min(open, close) - Math.random() * (volatility * 0.5);
+                let vol = Math.floor(Math.random() * 80) + 20;
+                candles.push({ open, close, high, low, vol });
+                miniHistory.push(close);
+                p = close;
+            }
+            currentPrice = p;
+            targetPrice = p;
+        }
+        initCandles();
+
+        function zoomChart(direction) {
+            if (direction > 0) {
+                zoomLevel = Math.max(10, zoomLevel - 4);
+            } else {
+                zoomLevel = Math.min(50, zoomLevel + 4);
+            }
+        }
+
+        container.addEventListener('wheel', (e) => {
+            e.preventDefault();
+            if (e.deltaY < 0) zoomChart(1); else zoomChart(-1);
+        }, { passive: false });
+
+        let initialPinchDistance = null;
+        container.addEventListener('touchstart', (e) => {
+            if (e.touches.length === 2) {
+                initialPinchDistance = Math.hypot(e.touches[0].clientX - e.touches[1].clientX, e.touches[0].clientY - e.touches[1].clientY);
+            }
+        });
+        container.addEventListener('touchmove', (e) => {                               if (e.touches.length === 2 && initialPinchDistance !== null) {
+                let currentDistance = Math.hypot(e.touches[0].clientX - e.touches[1].clientX, e.touches[0].clientY - e.touches[1].clientY);
+                if (currentDistance > initialPinchDistance + 12) { zoomChart(1); initialPinchDistance = currentDistance; }                                            else if (currentDistance < initialPinchDistance - 12) { zoomChart(-1); initialPinchDistance = currentDistance; }
+            }
+        });
+        container.addEventListener('touchend', () => { initialPinchDistance = null; });
+
+        setInterval(() => {
+            let step = currentAsset === 'EURUSD' ? 0.0002 : (currentAsset === 'BTCUSD' ? 50.0 : 5.0);
+            targetPrice = currentPrice + (Math.random() - 0.495) * step;
+        }, 400);
+
+        setInterval(() => {
+            let last = candles[candles.length - 1];
+            let open = last.close;
+            let close = currentPrice;
+            let high = Math.max(open, close) + (currentAsset === 'EURUSD' ? 0.0001 : 10);
+            let low = Math.min(open, close) - (currentAsset === 'EURUSD' ? 0.0001 : 10);
+            let vol = Math.floor(Math.random() * 80) + 20;
+
+            candles.push({ open, close, high, low, vol });
+            if (candles.length > 90) candles.shift();                                  miniHistory.push(close);
+            if (miniHistory.length > 60) miniHistory.shift();
+        }, 3000);                                                          
+        function setupDynamicScaling(cvs, context) {                                   const dpr = (window.devicePixelRatio || 1) * 2.5;
+            const rect = cvs.getBoundingClientRect();                                  cvs.width = rect.width * dpr;                                              cvs.height = rect.height * dpr;
+            context.scale(dpr, dpr);                                                   return { width: rect.width, height: rect.height };                     }
+                                                                                   function renderLoop() {
+            currentPrice += (targetPrice - currentPrice) * 0.08;                       let lastCandle = candles[candles.length - 1];                              if (lastCandle) {
+                lastCandle.close = currentPrice;                                           lastCandle.high = Math.max(lastCandle.high, currentPrice);
+                lastCandle.low = Math.min(lastCandle.low, currentPrice);
+                miniHistory[miniHistory.length - 1] = currentPrice;
+            }                                                              
+            const size = setupDynamicScaling(canvas, ctx);
+            const volSize = setupDynamicScaling(volumeChart, volCtx);                  const miniSize = setupDynamicScaling(miniCanvas, miniCtx);
+                                                                                       ctx.clearRect(0, 0, size.width, size.height);
+            volCtx.clearRect(0, 0, volSize.width, volSize.height);                     miniCtx.clearRect(0, 0, miniSize.width, miniSize.height);
+
+            let miniMin = Math.min(...miniHistory);
+            let miniMax = Math.max(...miniHistory);
+            let miniRange = miniMax - miniMin || 1;
+
+            miniCtx.strokeStyle = '#eab308'; miniCtx.lineWidth = 1.8;
+            miniCtx.beginPath();
+            miniHistory.forEach((val, i) => {
+                let x = (i / (miniHistory.length - 1)) * miniSize.width;
+                let y = miniSize.height - ((val - miniMin) / miniRange) * (miniSize.height - 10) - 5;
+                if (i === 0) miniCtx.moveTo(x, y); else miniCtx.lineTo(x, y);                                                                                     });
+            miniCtx.stroke();                                              
+            let visibleCandles = candles.slice(-zoomLevel);                            let candleWidth = Math.max(3, size.width / visibleCandles.length - 3);
+            let minP = Math.min(...visibleCandles.map(c => c.low));
+            let maxP = Math.max(...visibleCandles.map(c => c.high));
+            let range = maxP - minP || 1;
+                                                                                       if (showIndicator && visibleCandles.length > 5) {
+                ctx.strokeStyle = '#eab308'; ctx.lineWidth = 2.0;                          ctx.beginPath();
+                let maPeriod = 5;                                                          visibleCandles.forEach((c, i) => {
+                    let startIdx = Math.max(0, i - maPeriod + 1);                              let subset = visibleCandles.slice(startIdx, i + 1);
+                    let avgClose = subset.reduce((sum, item) => sum + item.close, 0) / subset.length;
+                                                                                               let x = i * (candleWidth + 3) + 4 + candleWidth / 2;
+                    let y = size.height - ((avgClose - minP) / range) * (size.height - 20) - 10;
+                    if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);                  });
+                ctx.stroke();
+            }                                                              
+            ctx.strokeStyle = '#38bdf8'; ctx.lineWidth = 1.8;                          ctx.beginPath();
+            visibleCandles.forEach((c, i) => {                                             let x = i * (candleWidth + 3) + 4 + candleWidth / 2;
+                let y = size.height - ((c.close - minP) / range) * (size.height - 20) - 10;                                                                           if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+            });                                                                        ctx.stroke();
+                                                                                       visibleCandles.forEach((c, i) => {
+                let x = i * (candleWidth + 3) + 4;                                         let yOpen = size.height - ((c.open - minP) / range) * (size.height - 20) - 10;                                                                        let yClose = size.height - ((c.close - minP) / range) * (size.height - 20) - 10;                                                                      let yHigh = size.height - ((c.high - minP) / range) * (size.height - 20) - 10;
+                let yLow = size.height - ((c.low - minP) / range) * (size.height - 20) - 10;
+                let isGreen = c.close >= c.open;
+
+                ctx.strokeStyle = isGreen ? '#34d399' : '#fb7185';
+                ctx.fillStyle = isGreen ? '#10b981' : '#f43f5e';
+                ctx.lineWidth = 1.5;
+
+                ctx.beginPath();
+                ctx.moveTo(x + candleWidth / 2, yHigh);
+                ctx.lineTo(x + candleWidth / 2, yLow);
+                ctx.stroke();
+
+                let bodyY = Math.min(yOpen, yClose);
+                let bodyH = Math.max(Math.abs(yClose - yOpen), 2);
+                ctx.fillRect(x, bodyY, candleWidth, bodyH);
+
+                volCtx.fillStyle = isGreen ? 'rgba(16, 185, 129, 0.65)' : 'rgba(244, 63, 94, 0.65)';
+                let volH = (c.vol / 100) * volSize.height;
+                volCtx.fillRect(x, volSize.height - volH, candleWidth, volH);
+            });
+
+            let dec = currentAsset === 'EURUSD' ? 5 : 2;
+            let step = range / 5;
+            document.getElementById('priceScale6').innerText = maxP.toFixed(dec);
+            document.getElementById('priceScale5').innerText = (maxP - step * 1).toFixed(dec);
+            document.getElementById('priceScale4').innerText = (maxP - step * 2).toFixed(dec);
+            document.getElementById('priceScale3').innerText = (maxP - step * 3).toFixed(dec);
+            document.getElementById('priceScale2').innerText = (maxP - step * 4).toFixed(dec);
+            document.getElementById('priceScale1').innerText = minP.toFixed(dec);
+
+            document.getElementById('scaleMid').innerText = currentPrice.toFixed(dec);
+            document.getElementById('priceHeader').innerText = currentPrice.toFixed(dec);
+
+            let priceRatio = (currentPrice - minP) / range;
+            let badgeY = Math.max(5, Math.min(size.height - 25, size.height - (priceRatio * (size.height - 20))));
+            document.getElementById('runningPriceBadge').style.top = `${badgeY}px`;
+
+            requestAnimationFrame(renderLoop);
+        }
+
+        renderLoop();
+    </script>
+</body>
+</html>
