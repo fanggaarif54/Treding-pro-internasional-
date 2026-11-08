@@ -156,7 +156,8 @@ app.get('/', (req, res) => {
 
 
 app.listen(PORT, () => {    console.log('==================================================');
-    console.log(`🚀 TERMINATOR AI & TRADING PRO AKTIF DI PORT ${PORT}`);
+    console.log(`🚀 SERVER AKTIF DI PORT ${PORT}`);
+});
     console.log(`💻 Akses browser: http://localhost:${PORT}/`);
     console.log('==================================================');
 });
