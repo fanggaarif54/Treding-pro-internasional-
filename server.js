@@ -143,9 +143,17 @@ app.post('/api/bet', (req, res) => {
 app.get('/desktop.html', (req, res) => {
     res.sendFile(path.join(__dirname, 'desktop.html'));
 });
+
+// Halaman Scanner Utama (Via URL langsung dengan ekstensi)
+app.get('/scanner.html', (req, res) => {
+    res.sendFile(path.join(__dirname, 'scanner.html'));
+});
+
+// Halaman Scanner Utama (Via Root /)
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'scanner.html'));
 });
+
 
 app.listen(PORT, () => {    console.log('==================================================');
     console.log(`🚀 TERMINATOR AI & TRADING PRO AKTIF DI PORT ${PORT}`);
