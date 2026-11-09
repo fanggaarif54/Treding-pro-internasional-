@@ -11,12 +11,17 @@ app.use(express.urlencoded({ extended: true }));
 // Menyajikan file statis (HTML, CSS, JS) dari direktori root
 app.use(express.static(__dirname));
 
-// Rute Halaman Utama (Mengarahkan ke scanner.html)
+// Rute Halaman Utama (Sekarang langsung mengarah ke desktop.html)
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'scanner.html'));
+    res.sendFile(path.join(__dirname, 'desktop.html'));
 });
 
-// Rute alternatif scanner.html
+// Rute alternatif untuk desktop.html
+app.get('/desktop.html', (req, res) => {
+    res.sendFile(path.join(__dirname, 'desktop.html'));
+});
+
+// Rute khusus jika ingin tetap bisa mengakses halaman scanner
 app.get('/scanner.html', (req, res) => {
     res.sendFile(path.join(__dirname, 'scanner.html'));
 });
